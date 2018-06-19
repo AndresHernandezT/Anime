@@ -22,14 +22,14 @@ insert into autores (id,nombre) values ('Tsugumi Ohba')returning id;
 cur.execute(sql)
 
 sql ="""
-insert into estudios (id,nombre) values ('Madhouse') returning id;
+insert into estudios (id,nombre) values ('Madhouse'), ('TV tokio'), ('śtudio ghibli'), ('8-bit'),('bandai namco pictures') returning id;
 """
 cur.execute(sql)
 
 conn.commit()
 post_id = cur.fetchone()[0]
 
-print post_id
+print (post_id)
 
 cur.execute(sql)
 
