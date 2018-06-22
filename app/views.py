@@ -14,7 +14,7 @@ def index():
 	cur.execute(sql)
 	resultados = cur.fetchall()
 	print resultados
-	return resultados[0][2]
+	return resultados[0][0]
 
 @app.route('/adios')
 def adios():
