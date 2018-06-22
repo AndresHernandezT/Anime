@@ -12,12 +12,13 @@ sql ="""
 conn.commit()
 post_id = cur.fetchone()[0]
 
-print post_idinsert into estados (anime_id,tipo_de_estado,fecha_emision,fecha_termino) values ('Finalizado','03/10/2006','26/06/2007') returning anime_id;
+print post_id
+insert into estados (anime_id,tipo_de_estado,fecha_emision,fecha_termino) values ('1','Finalizado','03/10/2006','26/06/2007') returning anime_id;
 """
 cur.execute(sql)
 
 sql ="""
-insert into autores (id,nombre) values ('Tsugumi Ohba')returning id;
+insert into autores (id,nombre) values ('Tsugumi Ohba') returning id;
 """
 cur.execute(sql)
 
