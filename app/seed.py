@@ -49,7 +49,33 @@ insert into estudios (id,nombre) values ('Madhouse'), ('TV tokio'), ('śtudio gh
 cur.execute(sql)
 
 sql ="""
-insert into generos (id,nombre) values ('Accion'), ('Ciencia Ficcion'), ('Deportes'), ('Espacial'), ('Infantil'), ('Mecha'), ('Parodia'), ('Romance'), ('Shounen'), ('Terror'), ('Artes Marciales'), ('Comedia'), ('Drama'), ('Fantasia'), ('Josei'), ('Militar'), ('Policia'), ('Samurai'), ('Sobrenatural'), ('Vampiros'), ('Aventuras'), ('Demencia'), ('Ecchi'), ('Harem'), ('Juegos'), ('Misterio'), ('Psicologico'), ('Seinen'), ('Superpoderes'), ('Yaoi'), ('Carreras'), ('Demonios'), ('Escolares'), ('Historico'), ('Magia'), ('Musica'), ('Recuentos de la vida'), ('Shoujo'), ('Suspenso'), ('Yuri') returning id;
+insert into generos (id,nombre) values ('Accion'), ('Ciencia Ficcion'), ('Deportes'), ('Espacial'), ('Infantil'), ('Mecha'), 
+('Parodia'), ('Romance'), ('Shounen'), ('Terror'), ('Artes Marciales'), ('Comedia'), ('Drama'), ('Fantasia'), ('Josei'), 
+('Militar'), ('Policia'), ('Samurai'), ('Sobrenatural'), ('Vampiros'), ('Aventuras'), ('Demencia'), ('Ecchi'), ('Harem'), 
+('Juegos'), ('Misterio'), ('Psicologico'), ('Seinen'), ('Superpoderes'), ('Yaoi'), ('Carreras'), ('Demonios'), ('Escolares'), 
+('Historico'), ('Magia'), ('Musica'), ('Recuentos de la vida'), ('Shoujo'), ('Suspenso'), ('Yuri') returning id;
+"""
+cur.execute(sql)
+
+sql ="""
+insert into animes_generos (anime_id,genero_id) values 
+('1','26'),('1','17'),('1','27'),('1','19'),('1','39'),
+('2','12'),('2','33'),('2','24'),('2','8'),('2','38'),
+('3','2'), ('3','13'), ('3','33'), ('3','8'), ('3','38'),
+('4','12'), ('4','8'), ('4','38'),
+('5','1'), ('5','21'),('5','12'),('5','14'),('5','8'),('5','38'),
+('6','1'), ('6','2'), ('6','22'), ('6','13'), ('6','6'), ('6','27'),
+('7','13'), ('7','35'), ('7','27'), ('7','39'),
+('8','1'), ('8','13'), ('8','27'), ('8','8'), ('8','28'), ('8','19'), ('8','10'),
+('9','13'), ('9','27'), ('9','37'), ('9','8'),
+('10','13'), ('10','8'), ('10','38'), ('10','19'), 
+('11','13'), ('11','33'), ('11','8'),('11','19'),
+('12','21'), ('12','13'), ('12','19'), 
+('13','12'), ('13','13'), ('13','33'), ('13','8'), 
+('14','12'), ('14','13'), ('14','33'), ('14','8')
+('15','12'), ('15','33'), ('15','8'),
+('16',''), ('16',''), ('16',''), ('16',''), (Hori-san to Miyamura-kun)
+returning id;
 """
 cur.execute(sql)
 
