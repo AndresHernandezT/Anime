@@ -31,9 +31,7 @@ insert into animes (id,nombre,cant_capitulos,tipo,autor_id,estudio_id) values
 cur.execute(sql)
 
 sql ="""
-conn.commit()
-post_id = cur.fetchone()[0]
-print post_idinsert into estados (anime_id,tipo_de_estado,fecha_emision,fecha_termino) values ('1','Finalizado','03/10/2006','26/06/2007') returning anime_id;
+insert into estados (anime_id,tipo_de_estado,fecha_emision,fecha_termino) values ('1','Finalizado','03/10/2006','26/06/2007') returning anime_id;
 """
 cur.execute(sql)
 
@@ -79,14 +77,5 @@ returning id;
 cur.execute(sql)
 
 conn.commit()
-post_id = cur.fetchone()[0]
-
-print (post_id)
-
-cur.execute(sql)
-
-
-conn.commit()
 cur.close()
 conn.close()
-
