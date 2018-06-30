@@ -32,6 +32,18 @@ insert into autores (id,nombre) values
 ('Wataru Watari'), 
 ('HERO'), 
 ('Yuyuko Takemiya'), 
+('Ukyo Kodachi'), 
+('Masashi Kishimoto'), 
+('Eiichirō Oda'), 
+('Yu Sasuga'), 
+('Kōhei Horikoshi'), 
+('Shinichiro Watanabe'), 
+('Goro Taniguchi'), 
+('Kei Sanbe'), 
+('CLAMP'), 
+('Ryoko Fukuyama'), 
+('Kouji Seo'), 
+('Yuki Kodama')
 
 
 returning id;
@@ -44,10 +56,10 @@ insert into estudios (id,nombre) values
 ('TV tokio'), 
 ('Studio Ghibli'), 
 ('8-bit'), 
-('bandai namco pictures'), 
+('Bandai Namco Pictures'), 
 ('Brain's Base'), 
 ('TMS Entertainment'), 
-('Pierrot')
+('Pierrot'), 
 ('Gainax'), 
 ('Shaft'), 
 ('Arms Corporation'), 
@@ -55,6 +67,14 @@ insert into estudios (id,nombre) values
 ('feel'), 
 ('Hoods Entertainment'), 
 ('J.C.Staff'), 
+('Toei Animation'), 
+('Liden Films'), 
+('Bones'), 
+('Sunrise'), 
+('Manglobe'), 
+('A-1 Pictures'), 
+('Diomedéa'), 
+('MAPPA')
 
 
 returning id;
