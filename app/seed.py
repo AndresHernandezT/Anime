@@ -52,13 +52,11 @@ cur.execute(sql)
 sql ="""
 insert into estados (anime_id,tipo_de_estado,fecha_emision,fecha_termino) values 
 ('1','Finalizado','03/10/2006','26/06/2007') 
-returning id;
-
 """
 cur.execute(sql)
 
 sql ="""
-insert into autores (id,nombre) values 
+insert into autores (nombre) values 
 ('Tsugumi Ohba'), 
 ('Junko'), 
 ('Ichigo Takano'), 
@@ -85,13 +83,12 @@ insert into autores (id,nombre) values
 ('Ryoko Fukuyama'), 
 ('Kouji Seo'), 
 ('Yuki Kodama')
-
 returning id;
 """
 cur.execute(sql)
 
 sql ="""
-insert into estudios (id,nombre) values 
+insert into estudios (nombre) values 
 ('Madhouse'), 
 ('TV tokio'), 
 ('Studio Ghibli'), 
@@ -102,6 +99,7 @@ insert into estudios (id,nombre) values
 ('Pierrot'), 
 ('Gainax'), 
 ('Shaft'), 
+
 ('Arms Corporation'), 
 ('CoMix Wave Films'), 
 ('feel'), 
@@ -115,14 +113,12 @@ insert into estudios (id,nombre) values
 ('A-1 Pictures'), 
 ('Diomedéa'), 
 ('MAPPA')
-
-
 returning id;
 """
 cur.execute(sql)
 
 sql ="""
-insert into generos (id,nombre) values ('Accion'), ('Ciencia Ficcion'), ('Deportes'), ('Espacial'), ('Infantil'), ('Mecha'), 
+insert into generos (nombre) values ('Accion'), ('Ciencia Ficcion'), ('Deportes'), ('Espacial'), ('Infantil'), ('Mecha'), 
 ('Parodia'), ('Romance'), ('Shounen'), ('Terror'), ('Artes Marciales'), ('Comedia'), ('Drama'), ('Fantasia'), ('Josei'), 
 ('Militar'), ('Policia'), ('Samurai'), ('Sobrenatural'), ('Vampiros'), ('Aventuras'), ('Demencia'), ('Ecchi'), ('Harem'), 
 ('Juegos'), ('Misterio'), ('Psicologico'), ('Seinen'), ('Superpoderes'), ('Yaoi'), ('Carreras'), ('Demonios'), ('Escolares'), 
@@ -173,13 +169,12 @@ insert into animes_generos (anime_id,genero_id) values
 ('38','14'), ('38','35'), ('38','38'), 
 ('39','36'), ('39','8'),  ('39','38'), 
 ('40','13'), ('40','23'), ('40','33'), ('40','36'), ('40','8'),  ('40','9'),   
-('41','13'), ('41','33'), ('41','15'), ('41','36'), ('41','8'), 
-returning id;
+('41','13'), ('41','33'), ('41','15'), ('41','36'), ('41','8')
 """
 cur.execute(sql)
 
 sql ="""
-insert into personajes (id,nombre) values  
+insert into personajes (nombre) values  
 ('L. Lawliet'),        ('Light Yagami'),       ('Ryuk'),             ('Misa Amane'),    ('Nate River'),    ('Rem'),                    
 ('Nozomu Nanashima'),  ('Hayato Shinomiya'),   ('Yuusuke Igarashi'), ('Asuma Mutsumi'), ('Kae Serinuma'),  ('Shima Nishina'),          
 ('Naho Takamiya'),     ('Kakeru Naruse'),      ('Hiroto Suwa'),      ('Takako Chino'),  ('Saku Hagita'),   ('Azusa Murasaka'),         
@@ -208,7 +203,7 @@ insert into personajes (id,nombre) values
 ('Sakura Kinomoto'),   ('Li Shaoran'),         ('Tomoyo Daidouji'),  ('Touya Kinomoto'),  ('Kero'),           ('Yukito Tsukishiro'),    
 ('Kanade Yuzuriha'),   ('Nino Arisugawa'),     ('Momo Sakaki'),      ('Miou Suguri'),     ('Tsukika Kuze'),   ('Yoshito Haruno'),      
 ('Fuuka Akitsuki'),    ('Yuu Haruna'),         ('Koyuki Hinashi'),   ('Sara Iwami'),      ('Kazuya Nachi'),   ('Yamato Akitsuki'),     
-('Ritsuko Mukae'),     ('Sentaro Kawabuchi'),  ('Yurika Fukahori'),  ('Tsutomu Mukae'),   ('Kaoru Nishimi'),  ('Sentaro Kawabuchi'),   
+('Ritsuko Mukae'),     ('Sentaro Kawabuchi'),  ('Yurika Fukahori'),  ('Tsutomu Mukae'),   ('Kaoru Nishimi'),  ('Sentaro Kawabuchi') 
 
 returning id;
 """
@@ -256,9 +251,7 @@ insert into animes_personajes (anime_id,personaje_id) values
 ('38','143'), ('38','144'), ('38','145'), ('38','146'), ('38','147'), ('38','148'),
 ('39','149'), ('39','150'), ('39','151'), ('39','152'), ('39','153'), ('39','154'),
 ('40','155'), ('40','156'), ('40','157'), ('40','158'), ('40','159'), ('40','160'),
-('41','161'), ('41','162'), ('41','163'), ('41','164'), ('41','165'), ('41','166'),
-
-returning id;
+('41','161'), ('41','162'), ('41','163'), ('41','164'), ('41','165'), ('41','166')
 """
 cur.execute(sql)
 
