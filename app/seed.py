@@ -14,7 +14,6 @@ insert into animes (id,nombre,cant_capitulos,tipo,autor_id,estudio_id) values
 ('Elfen Lied','13','Anime','8','11'),
 ('Kotonoha no Niwa','1','Pelicula','9','12'), 
 ('Hotarubi no Mori e','1','Pelicula','10','6'), 
-
 ('Kimi no Na wa','1','Pelicula','9','12'), 
 ('Sen to Chihiro no Kamikakushi','1','Pelicula','11','3'), 
 ('Yahari Ore no Seishun Love Come wa Machigatteiru. Zoku','13','Anime','12','13'), 
@@ -25,7 +24,6 @@ insert into animes (id,nombre,cant_capitulos,tipo,autor_id,estudio_id) values
 ('Toradora!: Bentou no Gokui','1','Ova','14','15'), 
 ('Boruto: Naruto Next Generations','65','Anime','15','8'), 
 ('Naruto Shippuden','500','Anime','16','8'), 
-
 ('Naruto','220','Anime','16','8'), 
 ('One Piece','844','Anime','17','16'), 
 ('Terra Formars','13','Anime','18','17'), 
@@ -36,7 +34,6 @@ insert into animes (id,nombre,cant_capitulos,tipo,autor_id,estudio_id) values
 ('Boku no Hero Academia 3rd Season','14','Anime','19','18'), 
 ('Cowboy Bebop','26','Anime','20','19'), 
 ('Cowboy Bebop: Tengoku no Tobira','1','Pelicula','20','19'), 
-
 ('Samurai Champloo','26','Anime','20','20'), 
 ('Code Geass','25','Anime','21','19'), 
 ('Code Geass: R2','25','Anime','21','19'), 
@@ -95,7 +92,6 @@ insert into estados (anime_id,tipo_de_estado,fecha_emision,fecha_termino) values
 ('39','Finalizado','11/04/2017','27/06/2017'), 
 ('40','Finalizado','06/01/2017','24/03/2017'), 
 ('41','Finalizado','12/04/2012','28/06/2012'), 
-
 """
 cur.execute(sql)
 
@@ -143,7 +139,6 @@ insert into estudios (nombre) values
 ('Pierrot'), 
 ('Gainax'), 
 ('Shaft'), 
-
 ('Arms Corporation'), 
 ('CoMix Wave Films'), 
 ('feel'), 
