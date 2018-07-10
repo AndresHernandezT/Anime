@@ -1,5 +1,5 @@
 host = "localhost"
-port = 5613
+port = 5432
 user = "postgres"
 passwd="nani"
 database = "anime"
