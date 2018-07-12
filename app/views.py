@@ -78,8 +78,34 @@ def categorias_id(id):
 def animes_id(id):
 	sql = "select * from Animes where id = " + str(id)
 	cur.execute(sql)
-	resultado = cur.fetchall()
+	anime = cur.fetchall()
 	sql = "select * from Generos"
 	cur.execute(sql)
 	generos = cur.fetchall()
-	return render_template('animes_id.html',generos=generos,resultado=resultado)
+	sql = "select * from Personajes, Animes_Personajes where anime_id = " + str(id) + " and Personajes.id = personaje_id"
+	cur.execute(sql)
+	personajes = cur.fetchall()
+	sql = "select * from Generos, Animes_Generos where anime_id = " + str(id) + " and Generos.id = genero_id"
+	cur.execute(sql)
+	categorias = cur.fetchall()
+	sql = "select * from Estudios, Animes where Estudios.id = estudio_id and Animes.id = " + str(id) 
+	cur.execute(sql)
+	estudio = cur.fetchall()
+	sql = "select * from Autores, Animes where Autores.id = autor_id and Animes.id = " + str(id)
+	cur.execute(sql)
+	autor = cur.fetchall()
+	sql = "select * from Estados where anime_id = " + str(id)
+	cur.execute(sql)
+	estado = cur.fetchall()
+	return render_template('animes_id.html',generos=generos,anime=anime,personajes=personajes,categorias=categorias,estudio=estudio,autor=autor,estado=estado)
+
+@app.route('/buscar/results?key=<keyword>')
+def search(keyword):
+	sql = "select * from Generos"
+	cur.execute(sql)
+	generos = cur.fetchall()
+	sql = """ select * from Animes where nombre like '%{perra}%'"""
+	perra = "Death"
+	cur.execute(sql)
+	resultados = cur.fetchall()
+	return render_template('buscar.html',generos=generos,resultados=resultados)
