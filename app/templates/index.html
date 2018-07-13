@@ -63,18 +63,16 @@
   </div>
 </nav>
 
+{% for anime in animes %}
+<a class="nav-link" href="/animes/{{ anime[0] }}"><h2>{{ anime[1] }}</h2></a>
+{% endfor %}
+
+{% if not animes %}
 <div class="jumbotron" >
    <h1 >Anime Plagio </h1>
   <p>Buscador de animes por fanáticos, para fanáticos </p>
 
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8BCvVVFCm3VQbvVKWpiUR6lspWUnE3UXb5Mtm-e9Y8Oit2mNJ" width="400" height="200"/> </img>
  </div>
-
-
-{% for anime in animes %}
-<a class="nav-link" href="/animes/{{ anime[0] }}"><h2>{{ anime[1] }}</h2></a>
-{% endfor %}
-
-{% if not animes %}
 <h1 class="navbar">PROYECTO DE BASES: PAGINA DE ANIMES</h1>
 {% endif %}
