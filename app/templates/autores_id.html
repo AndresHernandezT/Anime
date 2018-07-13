@@ -1,11 +1,11 @@
-<title> {{ anime[0][1] }} | AnimePlagio </title>
+<title> {{ resultado[0][0] }} | AnimePlagio </title>
 
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='apariencia.css') }}">
 </head>
 
-<h1 style="text-align: center;">Anime<span class="badge badge-secondary">Plagio</span><center>Animes</center></h1>
+<h1 style="text-align: center;">Anime<span class="badge badge-secondary">Plagio</span><center>Autores</center></h1>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -28,7 +28,7 @@
         <a class="nav-link" href="/autores">Autores</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="categorias" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categorias
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -63,39 +63,9 @@
   </div>
 </nav>
 
-<h1 class="nav-tabs"><a class="navbar">{{ anime[0][1] }}</a></h1>
+<h1 class="nav-tabs"><a class="navbar">{{ resultado[0][0] }}</a></h1>
 
-{% for tipo in tipos %}
-{% if tipo[1] == anime[0][3] %}
-<h2 class="navbar">Tipo:</h2>
-<a class="nav-link" href="/tipos/{{ tipo[0] }}"><h3>{{ anime[0][3] }}</h3></a>
-{% endif %}
+<h2 class="navbar">Animes asociados a este autor:</h2>
+{% for anime in animes %}
+<a class="nav-link" href="/animes/{{ anime[0] }}"><h3>{{ anime[1] }}</h3></a>
 {% endfor %}
-
-<h2 class="navbar">Cantidad de Capitulos:</h2>
-<a class="nav-link"><h3>{{ anime[0][2] }}</h3></a>
-
-<h2 class="navbar">Estado:</h2>
-<a class="nav-link"><h3>{{ estado[0][1] }}</h3></a>
-
-{% if estado[0][3] != "" %}
-<h2 class="navbar">Al aire desde:</h2>
-<a class="nav-link"><h3>{{ estado[0][2] }} hasta {{ estado[0][3] }}</h3></a>
-{%else%}
-<h2 class="navbar">Publicado en:</h2>
-<a class="nav-link"><h3>{{ estado[0][2] }}</h3></a>
-{% endif %}
-
-<h2 class="navbar">Autor:</h2>
-<a class="nav-link" href="/autores/{{ autor[0][0] }}"><h3>{{ autor[0][1] }}</h3></a>
-
-<h2 class="navbar">Estudio:</h2>
-<a class="nav-link" href="/estudios/{{estudio[0][0] }}"><h3>{{ estudio[0][1] }}</h3></a>
-
-<h2 class="navbar">Personajes:</h2>
-{% for personaje in personajes %}
-<a class="nav-link" href="/personajes/{{ personaje[0] }}"><h3>{{ personaje[1] }}</h3></a>
-{% endfor %}
-
-
-
