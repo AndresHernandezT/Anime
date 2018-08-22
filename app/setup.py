@@ -66,6 +66,13 @@ CREATE TABLE Generos
 
 cur.execute(sql)
 
+sql ="""
+CREATE TABLE Usuarios
+	(id serial PRIMARY KEY, name varchar(40), pass varchar(100));
+"""
+
+cur.execute(sql)
+
 
 conn.commit()
 cur.close()

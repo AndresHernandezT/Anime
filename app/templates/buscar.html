@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='apariencia.css') }}">
 </head>
 
+{% if 'username' in session %}
+<small style="text-align:right;position:absolute;left:0;right:0">{{ session['username'] }} conectado.<p><a href="/logout">Cerrar sesion</a></p></small>
+{% endif %}
 <h1 style="text-align: center;">Anime<span class="badge badge-secondary">Plagio</span><center>Buscador</center></h1>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -22,7 +25,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        {% if 'username' in session %}
+        <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
+        {% else %}
+        <a class="nav-link" href="/">Iniciar Sesion<span class="sr-only">(current)</span></a>
+        {% endif %}
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/autores">Autores</a>

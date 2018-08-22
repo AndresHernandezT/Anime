@@ -1,13 +1,16 @@
 from app import app
-from flask import render_template, request
+from flask import render_template, request, session, redirect, url_for
 from configuraciones import *
+from werkzeug.security import generate_password_hash, check_password_hash
 
 import psycopg2
 conn = psycopg2.connect("host=%s dbname=%s user=%s password=%s port=%s"%(host,database,user,passwd,port))
 cur = conn.cursor()
 
-@app.route('/')
-@app.route('/index')
+app.secret_key = b'_p#lou8#veta.betdhzhj.flok\n\xec]/'
+
+@app.route('/', methods=["POST", "GET"])
+@app.route('/index', methods=["POST","GET"])
 def index():
 	sql = "select row_number() over (order by tipo), tipo from Animes group by tipo order by tipo"
 	cur.execute(sql)
@@ -15,7 +18,18 @@ def index():
 	sql = "select * from Generos"
 	cur.execute(sql)
 	generos = cur.fetchall()
-	return render_template('index.html',generos=generos,tipos=tipos)
+	errorname = None
+	if request.method == "POST":
+		username = request.form["username"]
+		password = request.form["pass"]
+		sql = "select pass from Usuarios where name like '%s'" %(username)
+		cur.execute(sql)
+		users = cur.fetchall()
+		if users and check_password_hash(users[0][0], password):
+			session['username'] = username
+		else:
+			errorname = "Error, su clave de acceso o usuario no son validos."
+	return render_template('index.html',generos=generos,tipos=tipos,errorname=errorname)
 
 @app.route('/animes')
 def animes():
@@ -199,3 +213,36 @@ def tipos_id(id):
 	cur.execute(sql)
 	animes = cur.fetchall()
 	return render_template('tipos.html',animes=animes,generos=generos,resultado=resultado,tipos=tipos)
+
+@app.route('/registro', methods=["POST","GET"])
+def registro():
+	sql = "select row_number() over (order by tipo), tipo from Animes group by tipo order by tipo"
+	cur.execute(sql)
+	tipos = cur.fetchall()
+	sql = "select * from Generos"
+	cur.execute(sql)
+	generos = cur.fetchall()
+	errorname = None
+	errorpass = None
+	if request.method == "POST":
+		username = request.form["username"]
+		password = generate_password_hash(request.form["pass"])
+		confirmpass = request.form["confirmpass"]
+		sql = "select name from Usuarios where name like '%s'" %(username)
+		cur.execute(sql)
+		users = cur.fetchall()
+		if users:
+			errorname = "Ese usuario ya existe."
+		if confirmpass != request.form["pass"]:
+			errorpass = "Las claves no coinciden."
+		if not errorpass and not errorname:
+			sql = "insert into Usuarios (name,pass) values ('%s','%s')" %(username,password)
+			cur.execute(sql)
+			conn.commit()
+			return redirect(url_for('index'))
+	return render_template('registro.html',generos=generos,tipos=tipos,errorname=errorname,errorpass=errorpass)
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))

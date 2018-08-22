@@ -1,2 +1,4 @@
 from app import app
-app.run(debug=True,host="0.0.0.0",port=5612)
+host = "192.168.0.23"
+port = 80
+app.run(debug=True,host=host,port=port)

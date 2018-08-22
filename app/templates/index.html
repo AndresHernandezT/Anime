@@ -5,7 +5,10 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='apariencia.css') }}">
 </head>
 
-<h1 style="text-align: center;">Anime<span class="badge badge-secondary">Plagio</span><center>Animes</center></h1>
+{% if 'username' in session %}
+<small style="text-align:right;position:absolute;left:0;right:0">{{ session['username'] }} conectado.<p><a href="/logout">Cerrar sesion</a></p></small>
+{% endif %}
+<h1 style="text-align:center">Anime<span class="badge badge-secondary">Plagio</span><center>Animes</center></h1>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
@@ -22,7 +25,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        {% if 'username' in session %}
+        <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
+        {% else %}
+        <a class="nav-link" href="/">Iniciar Sesion<span class="sr-only">(current)</span></a>
+        {% endif %}
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/autores">Autores</a>
@@ -63,10 +70,50 @@
   </div>
 </nav>
 
+<div class="container">
 {% for anime in animes %}
-<a class="nav-link" href="/animes/{{ anime[0] }}"><h2>{{ anime[1] }}</h2></a>
+<label>
+<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+  <div class="card-header">{{ anime[3] }}</div>
+  <div class="card-body">
+    <a href="/anime/{{ anime[0] }}"><h5 class="card-title">{{ anime[1]}}</h5></a>
+    <p class="card-text"></p>
+  </div>
+</div>
+</label>
 {% endfor %}
+</div>
 
 {% if not animes %}
 <h1 class="navbar">PROYECTO DE BASES: PAGINA DE ANIMES</h1>
+
+{% if 'username' not in session %}
+<form method="POST">
+  <div class="container">
+  <div class="col-md-4 mb-3">
+    <h5 class="navbar">Inicio de Sesion</h5>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nombre de usuario</label>
+    <input type="text" class="form-control mx-sm-3" name=username aria-describedby="emailHelp" placeholder="Enter email">
+    {% if errorname %}
+    <small id="emailHelp" class="form-text text-muted"><a style="color:red">{{ errorname }}</a></small>
+    {% else %}
+    <small id="emailHelp" class="form-text text-muted">Ejem: Usuario123.</small>
+    {% endif %}
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Contraseña</label>
+    <input type="password" class="form-control mx-sm-3" name="pass" placeholder="Password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Recordar</label>
+    <small class="form-text text-muted"><a href="/registro">Registrarse</a></small>
+  </div>
+  <button type="submit" class="btn btn-primary">Entrar</button>
+</div>
+</div>
+</form>
+{% endif %}
+
 {% endif %}
